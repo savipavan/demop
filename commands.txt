@@ -1,18 +1,20 @@
-CREATING MODULES
+CREATING A GIT REPOSITORY
 
-$ cd /etc/puppet/environments/production/modules/
-$ sudo puppet module generate benpiper-mediawiki --environment production
-
-
-
-DOWNLOADING MODULES FROM THE PUPPET FORGE
-
-$ sudo puppet module install puppetlabs-apache --modulepath etc/puppet/environments/production/modules
-
-
-$ sudo puppet module install puppetlabs-vcsrepo --modulepath /etc/puppet/environments/production/modules
+On puppetmaster:
+$ sudo git config --global user.name "Ben Piper"
+$ sudo git config --global user.email "ben@benpiper.com"
+$ cd /etc/puppet/environments/production
+$ sudo git init
+$ sudo git add .
+$ sudo git commit -m "Initial commit"
 
 
-$ sudo puppet module install puppetlabs-mysql --modulepath /etc/puppet/environments/production/modules
+RECOVERING FROM COMMITTED MISTAKES
 
-$ sudo puppet module install puppetlabs-firewall --modulepath /etc/puppet/environments/production/modules
+$ sudo git log
+$ sudo git revert --no-edit [bad commit]
+
+
+RECOVERING FROM UNCOMMITTED MISTAKES
+$ sudo git reset HEAD --hard
+
